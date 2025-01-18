@@ -1,6 +1,7 @@
 import AddButton from "./components/AddButton";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <SearchBar />
         <AddButton />
       </div>
-      {/* <AddButton /> */}
+      <TodoList />
     </div>
   );
 }
