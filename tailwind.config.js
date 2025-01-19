@@ -27,7 +27,7 @@ export default {
       },
       screens: {
         mobile: "393px",
-        destop: "1440px",
+        desktop: "1024px",
       },
     },
   },
