@@ -19,7 +19,7 @@ function App() {
         </div>
         <TodoList />
       </div>
-      {/* <TodoListItemPopup /> */}
+      <TodoListItemPopup />
       {/* <TodoDetailPopup /> */}
     </div>
   );
