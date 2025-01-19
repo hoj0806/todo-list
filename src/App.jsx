@@ -4,7 +4,7 @@ import SearchBar from "./components/SearchBar";
 import TodoDetailPopup from "./components/TodoDetailPopup";
 import TodoList from "./components/TodoList";
 import TodoListItemPopup from "./components/TodoListItemPopup";
-
+import TodoListSearchPopup from "./components/TodoListSearchPopup";
 function App() {
   return (
     <div className='relative h-screen'>
@@ -20,7 +20,8 @@ function App() {
         <TodoList />
       </div>
       {/* <TodoListItemPopup /> */}
-      <TodoDetailPopup />
+      {/* <TodoDetailPopup /> */}
+      <TodoListSearchPopup />
     </div>
   );
 }
