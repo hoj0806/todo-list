@@ -19,8 +19,8 @@ function App() {
         </div>
         <TodoList />
       </div>
-      <TodoListItemPopup />
-      {/* <TodoDetailPopup /> */}
+      {/* <TodoListItemPopup /> */}
+      <TodoDetailPopup />
     </div>
   );
 }
