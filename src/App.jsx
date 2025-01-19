@@ -13,7 +13,7 @@ function App() {
           <Header />
         </div>
 
-        <div className='h-11 flex border-solid'>
+        <div className='h-11 flex border-solid desktop:hidden'>
           <SearchBar />
           <AddButton />
         </div>
