@@ -10,9 +10,9 @@ const todoSlice = createSlice({
   name: "todoSlice",
   initialState,
   reducers: {
-    addList: (state) => {
+    addList: (state, action) => {
       state.push({
-        title: "test",
+        title: action.payload,
         checked: false,
         date: "2024/01/01",
       });
