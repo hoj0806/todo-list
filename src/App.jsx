@@ -5,15 +5,17 @@ import Wrapper from "./layout/Wrapper";
 import TodoList from "./components/TodoList";
 import AppLayout from "./layout/AppLayout";
 import MobileFeatureLayout from "./layout/MobileFeatureLayout";
-import TodoDetailPopup from "./components/TodoDetailPopup";
-import TodoListItemPopup from "./components/TodoListItemPopup";
+
+import TodoListItemPopup from "./components/TodoListDeletePopup";
 import TodoListSearchPopup from "./components/TodoListSearchPopup";
 import { useSelector } from "react-redux";
 import AddTodoList from "./components/AddTodoList";
+import TodoListDeletePopup from "./components/TodoListDeletePopup";
+import { useState } from "react";
 
 function App() {
   const mode = useSelector((state) => state.modeSlice);
-  console.log(mode.mode);
+  const [selectIndex, setSelectIndex] = useState(null);
   return (
     <Wrapper>
       <AppLayout>
@@ -22,10 +24,12 @@ function App() {
           <SearchBar />
           <AddButton />
         </MobileFeatureLayout>
-        <TodoList />
+        <TodoList setSelectIndex={setSelectIndex} />
       </AppLayout>
       {mode.mode === "add" ? <AddTodoList /> : null}
-      {/* <TodoListItemPopup /> */}
+      {mode.mode === "delete" ? (
+        <TodoListDeletePopup selectIndex={selectIndex} />
+      ) : null}
       {/* <TodoDetailPopup /> */}
       {/* <TodoListSearchPopup /> */}
     </Wrapper>

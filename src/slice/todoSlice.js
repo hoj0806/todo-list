@@ -20,8 +20,11 @@ const todoSlice = createSlice({
     checkList: (state, action) => {
       state[action.payload].checked = !state[action.payload].checked;
     },
+    deleteList: (state, action) => {
+      state.splice(action.payload, 1);
+    },
   },
 });
 
 export default todoSlice;
-export const { addList, checkList } = todoSlice.actions;
+export const { addList, checkList, deleteList } = todoSlice.actions;
