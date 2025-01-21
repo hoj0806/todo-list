@@ -5,12 +5,18 @@ import editIcon from "../assets/icon/edit.svg";
 import deleteIcon from "../assets/icon/delete.svg";
 import { useDispatch } from "react-redux";
 import { checkList } from "../slice/todoSlice";
-function TodoListItem({ todo, index }) {
+import { modifyMode } from "../slice/modeSlice";
+function TodoListItem({ todo, index, setSelectIndex }) {
   const dispatch = useDispatch();
   const { title, checked } = todo;
   console.log(index);
   function checkTodoList() {
     dispatch(checkList(index));
+  }
+
+  function onClickDeleteButton() {
+    setSelectIndex(index);
+    dispatch(modifyMode("delete"));
   }
   return (
     <div>
@@ -35,7 +41,10 @@ function TodoListItem({ todo, index }) {
               className='desktop:mx-auto desktop:w-[50px] desktop:h-[50px]'
             />
           </button>
-          <button className='desktop:w-[132px] desktop:h-[72px] desktop:bg-red desktop:rounded-xl'>
+          <button
+            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-red desktop:rounded-xl'
+            onClick={onClickDeleteButton}
+          >
             <img
               src={deleteIcon}
               className='desktop:mx-auto desktop:w-[50px] desktop:h-[50px]'
