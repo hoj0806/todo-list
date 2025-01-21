@@ -5,9 +5,9 @@ import Wrapper from "./layout/Wrapper";
 import TodoList from "./components/TodoList";
 import AppLayout from "./layout/AppLayout";
 import MobileFeatureLayout from "./layout/MobileFeatureLayout";
-// import TodoDetailPopup from "./components/TodoDetailPopup";
-// import TodoListItemPopup from "./components/TodoListItemPopup";
-// import TodoListSearchPopup from "./components/TodoListSearchPopup";
+import TodoDetailPopup from "./components/TodoDetailPopup";
+import TodoListItemPopup from "./components/TodoListItemPopup";
+import TodoListSearchPopup from "./components/TodoListSearchPopup";
 function App() {
   return (
     <Wrapper>
