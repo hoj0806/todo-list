@@ -17,8 +17,8 @@ const todoSlice = createSlice({
         date: "2024/01/01",
       });
     },
-    checkList: (state) => {
-      state.checked = !state.checked;
+    checkList: (state, action) => {
+      state[action.payload].checked = !state[action.payload].checked;
     },
   },
 });
