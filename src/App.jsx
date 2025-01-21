@@ -19,7 +19,7 @@ function App() {
         </MobileFeatureLayout>
         <TodoList />
       </AppLayout>
-      {/* <TodoListItemPopup /> */}
+      <TodoListItemPopup />
       {/* <TodoDetailPopup /> */}
       {/* <TodoListSearchPopup /> */}
     </Wrapper>
