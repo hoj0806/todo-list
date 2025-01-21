@@ -17,8 +17,11 @@ const todoSlice = createSlice({
         date: "2024/01/01",
       });
     },
+    checkList: (state) => {
+      state.checked = !state.checked;
+    },
   },
 });
 
 export default todoSlice;
-export const { addList } = todoSlice.actions;
+export const { addList, checkList } = todoSlice.actions;
