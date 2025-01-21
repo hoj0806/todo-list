@@ -1,28 +1,28 @@
 import AddButton from "./components/AddButton";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
-import TodoDetailPopup from "./components/TodoDetailPopup";
+import Wrapper from "./layout/Wrapper";
 import TodoList from "./components/TodoList";
+import AppLayout from "./layout/AppLayout";
+import MobileFeatureLayout from "./layout/MobileFeatureLayout";
+import TodoDetailPopup from "./components/TodoDetailPopup";
 import TodoListItemPopup from "./components/TodoListItemPopup";
 import TodoListSearchPopup from "./components/TodoListSearchPopup";
 function App() {
   return (
-    <div className='relative h-screen'>
-      <div className='bg-white-20 max-w-screen-2xl mx-auto flex flex-col h-full'>
-        <div>
-          <Header />
-        </div>
-
-        <div className='h-11 flex border-solid desktop:hidden'>
+    <Wrapper>
+      <AppLayout>
+        <Header />
+        <MobileFeatureLayout>
           <SearchBar />
           <AddButton />
-        </div>
+        </MobileFeatureLayout>
         <TodoList />
-      </div>
+      </AppLayout>
       {/* <TodoListItemPopup /> */}
       {/* <TodoDetailPopup /> */}
-      <TodoListSearchPopup />
-    </div>
+      {/* <TodoListSearchPopup /> */}
+    </Wrapper>
   );
 }
 
