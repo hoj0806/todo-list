@@ -22,9 +22,6 @@ function TodoList() {
       <TodoListItem />
       <TodoListItem />
       <TodoListItem />
-      <TodoListItem />
-      <TodoListItem />
-      <TodoListItem />
     </ul>
   );
 }

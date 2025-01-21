@@ -4,12 +4,13 @@ import SearchBar from "./components/SearchBar";
 import TodoDetailPopup from "./components/TodoDetailPopup";
 import TodoListItemPopup from "./components/TodoListItemPopup";
 import TodoListSearchPopup from "./components/TodoListSearchPopup";
-import AppLayout from "./layout/AppLayout";
+import Wrapper from "./layout/Wrapper";
 import TodoList from "./components/TodoList";
+import AppLayout from "./layout/AppLayout";
 function App() {
   return (
-    <AppLayout>
-      <div className='bg-white-20 max-w-screen-2xl mx-auto flex flex-col h-full'>
+    <Wrapper>
+      <AppLayout>
         <div>
           <Header />
         </div>
@@ -19,11 +20,11 @@ function App() {
           <AddButton />
         </div>
         <TodoList />
-      </div>
+      </AppLayout>
       {/* <TodoListItemPopup /> */}
       {/* <TodoDetailPopup /> */}
       {/* <TodoListSearchPopup /> */}
-    </AppLayout>
+    </Wrapper>
   );
 }
 
