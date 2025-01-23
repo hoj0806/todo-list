@@ -17,9 +17,11 @@ function TodoDetailPopup({ selectedId }) {
           <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2'>
             2025.01.01
           </p>
-          <div className='bg-green w-full h-[200px] text-left rounded-[8px] desktop:h-[350px]'>
-            ss
-          </div>
+          <textarea
+            className='bg-green w-full h-[200px] text-left rounded-[8px] desktop:h-[350px]'
+            defaultValue={findList.memo}
+          />
+
           <div className='w-12 h-4 text-[8px] bg-black text-white rounded-[8px] flex items-center px-1 gap-1 desktop:w-[100px] desktop:h-[32px] desktop:rounded-3xl desktop:px-2 desktop:gap-2'>
             <img
               src={DeleteHashTagIcon}
