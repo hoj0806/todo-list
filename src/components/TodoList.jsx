@@ -1,6 +1,6 @@
 import TodoListItem from "./TodoListItem";
 import { useSelector } from "react-redux";
-function TodoList({ setSelectIndex }) {
+function TodoList({ setSelectIndex, setSelectedId }) {
   const todoList = useSelector((state) => state.todoSlice);
 
   return (
@@ -9,7 +9,9 @@ function TodoList({ setSelectIndex }) {
         <TodoListItem
           todo={todo}
           index={index}
+          key={todo.id}
           setSelectIndex={setSelectIndex}
+          setSelectedId={setSelectedId}
         />
       ))}
     </ul>

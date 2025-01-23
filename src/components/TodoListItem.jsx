@@ -6,10 +6,10 @@ import deleteIcon from "../assets/icon/delete.svg";
 import { useDispatch } from "react-redux";
 import { checkList } from "../slice/todoSlice";
 import { modifyMode } from "../slice/modeSlice";
-function TodoListItem({ todo, index, setSelectIndex }) {
+function TodoListItem({ todo, index, setSelectIndex, setSelectedId }) {
   const dispatch = useDispatch();
-  const { title, checked } = todo;
-  console.log(index);
+  const { title, checked, id } = todo;
+
   function checkTodoList() {
     dispatch(checkList(index));
   }
@@ -22,7 +22,7 @@ function TodoListItem({ todo, index, setSelectIndex }) {
     dispatch(modifyMode("edit"));
   }
   return (
-    <div onClick={() => setSelectIndex(index)}>
+    <div onClick={() => setSelectedId(id)}>
       <li className='bg-orange h-[58px] rounded-2xl px-3 flex items-center desktop:h-[120px] desktop:px-[34px]'>
         <button onClick={() => checkTodoList()}>
           <img
