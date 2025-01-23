@@ -6,7 +6,7 @@ const initialState = {
       title: "밥먹기",
       checked: false,
       date: "2024/01/01",
-      hashtags: [],
+      hashtags: ["test1", "test2", "test33"],
       id: 1,
       memo: "오늘 점심은 돈까스",
     },
@@ -14,7 +14,7 @@ const initialState = {
       title: "씻기",
       checked: true,
       date: "2024/02/01",
-      hashtags: [],
+      hashtags: ["test1", "test2", "test33"],
       id: 2,
       memo: "치실하기",
     },
@@ -22,7 +22,7 @@ const initialState = {
       title: "공부하기",
       checked: false,
       date: "2024/03/01",
-      hashtags: [],
+      hashtags: ["test1", "test2", "test33"],
       id: 3,
       memo: "세시간 정도는 하기",
     },
@@ -38,7 +38,7 @@ const todoSlice = createSlice({
         title: action.payload,
         checked: false,
         date: "2024/01/01",
-        hasgtags: [],
+        hashtags: [],
         id: Date.now(),
         memo: "",
       });
@@ -84,9 +84,49 @@ const todoSlice = createSlice({
         todo.memo = action.payload.memo;
       },
     },
+    deleteHasgtag: {
+      prepare(id, hasgtagIndex) {
+        return {
+          payload: {
+            id,
+            hasgtagIndex,
+          },
+        };
+      },
+      reducer(state, action) {
+        const todo = state.todoList.find(
+          (todo) => todo.id === action.payload.id
+        );
+        todo.hashtags.splice(action.payload.hasgtagIndex, 1);
+      },
+    },
+    addHasgtag: {
+      prepare(id, hasgTagContent) {
+        return {
+          payload: {
+            id,
+            hasgTagContent,
+          },
+        };
+      },
+      reducer(state, action) {
+        const todo = state.todoList.find(
+          (todo) => todo.id === action.payload.id
+        );
+        const hasgTags = todo.hashtags;
+        hasgTags.push(action.payload.hasgTagContent);
+      },
+    },
   },
 });
 
 export default todoSlice;
-export const { addList, checkList, deleteList, editTitle, editMemo } =
-  todoSlice.actions;
+export const {
+  addList,
+  checkList,
+  deleteList,
+  editTitle,
+  editMemo,
+  deleteHasgtag,
+  addHasgtag,
+} = todoSlice.actions;
