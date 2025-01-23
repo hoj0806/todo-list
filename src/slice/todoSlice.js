@@ -68,8 +68,25 @@ const todoSlice = createSlice({
         todo.title = action.payload.title;
       },
     },
+    editMemo: {
+      prepare(id, memo) {
+        return {
+          payload: {
+            id,
+            memo,
+          },
+        };
+      },
+      reducer(state, action) {
+        const todo = state.todoList.find(
+          (todo) => todo.id === action.payload.id
+        );
+        todo.memo = action.payload.memo;
+      },
+    },
   },
 });
 
 export default todoSlice;
-export const { addList, checkList, deleteList, editTitle } = todoSlice.actions;
+export const { addList, checkList, deleteList, editTitle, editMemo } =
+  todoSlice.actions;
