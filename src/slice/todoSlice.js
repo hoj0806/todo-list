@@ -38,7 +38,7 @@ const todoSlice = createSlice({
         title: action.payload,
         checked: false,
         date: "2024/01/01",
-        hasgtags: [],
+        hashtags: [],
         id: Date.now(),
         memo: "",
       });
@@ -100,6 +100,23 @@ const todoSlice = createSlice({
         todo.hashtags.splice(action.payload.hasgtagIndex, 1);
       },
     },
+    addHasgtag: {
+      prepare(id, hasgTagContent) {
+        return {
+          payload: {
+            id,
+            hasgTagContent,
+          },
+        };
+      },
+      reducer(state, action) {
+        const todo = state.todoList.find(
+          (todo) => todo.id === action.payload.id
+        );
+        const hasgTags = todo.hashtags;
+        hasgTags.push(action.payload.hasgTagContent);
+      },
+    },
   },
 });
 
@@ -111,4 +128,5 @@ export const {
   editTitle,
   editMemo,
   deleteHasgtag,
+  addHasgtag,
 } = todoSlice.actions;

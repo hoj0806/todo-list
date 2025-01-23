@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { returnDefault } from "../slice/modeSlice";
 import { useState } from "react";
-import { editMemo } from "../slice/todoSlice";
+import { addHasgtag, editMemo } from "../slice/todoSlice";
 import Popuphashtag from "./Popuphashtag";
 
 function TodoDetailPopup({ selectedId }) {
@@ -10,14 +10,27 @@ function TodoDetailPopup({ selectedId }) {
   const dispatch = useDispatch();
 
   const [memoContent, setMemoContent] = useState("");
-
-  const haasgTags = findList.hashtags;
+  const [hashtagInputValue, setTagInputValue] = useState("");
+  const hashTags = findList.hashtags;
+  console.log(hashTags);
 
   function onChangeMemo(e) {
     setMemoContent(e.target.value);
   }
+
   function onClickMemoButton(memo) {
     dispatch(editMemo(selectedId, memo));
+  }
+
+  function onKeyDown(e) {
+    if (e.key === "Enter") {
+      dispatch(addHasgtag(selectedId, hashtagInputValue));
+      setTagInputValue("");
+    }
+  }
+
+  function onChangeHasgTagInput(e) {
+    setTagInputValue(e.target.value);
   }
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
@@ -35,19 +48,29 @@ function TodoDetailPopup({ selectedId }) {
             defaultValue={findList.memo}
             onChange={onChangeMemo}
           />
+          <input
+            onKeyDown={onKeyDown}
+            onChange={onChangeHasgTagInput}
+            value={hashtagInputValue}
+          />
           <button onClick={() => onClickMemoButton(memoContent)}>
             메모 수정
           </button>
-          <div className='flex gap-1'>
-            {haasgTags.map((tag, index) => (
-              <Popuphashtag
-                key={index}
-                tag={tag}
-                index={index}
-                selectedId={selectedId}
-              />
-            ))}
-          </div>
+
+          {hashTags.length !== 0 ? (
+            <div className='flex gap-1'>
+              {hashTags.map((tag, index) => (
+                <Popuphashtag
+                  key={index}
+                  tag={tag}
+                  index={index}
+                  selectedId={selectedId}
+                />
+              ))}
+            </div>
+          ) : (
+            <p>해시태그를 추가해보세요</p>
+          )}
         </div>
 
         <button
