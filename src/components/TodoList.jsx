@@ -1,7 +1,7 @@
 import TodoListItem from "./TodoListItem";
 import { useSelector } from "react-redux";
-function TodoList({ setSelectIndex }) {
-  const todoList = useSelector((state) => state.todoSlice);
+function TodoList({ setSelectedId }) {
+  const todoList = useSelector((state) => state.todoSlice.todoList);
 
   return (
     <ul className='pl-3 pr-4 py-7 flex flex-col gap-2 grow overflow-auto desktop:border-t-[1px] desktop:pl-6 desktop:gap-7'>
@@ -9,7 +9,8 @@ function TodoList({ setSelectIndex }) {
         <TodoListItem
           todo={todo}
           index={index}
-          setSelectIndex={setSelectIndex}
+          key={todo.id}
+          setSelectedId={setSelectedId}
         />
       ))}
     </ul>

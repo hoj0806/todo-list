@@ -12,10 +12,11 @@ import { useSelector } from "react-redux";
 import AddTodoList from "./components/AddTodoList";
 import TodoListDeletePopup from "./components/TodoListDeletePopup";
 import { useState } from "react";
+import TodoListEditTitlePopup from "./components/TodoListEditTitlePopup";
 
 function App() {
   const mode = useSelector((state) => state.modeSlice);
-  const [selectIndex, setSelectIndex] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
   return (
     <Wrapper>
       <AppLayout>
@@ -24,11 +25,14 @@ function App() {
           <SearchBar />
           <AddButton />
         </MobileFeatureLayout>
-        <TodoList setSelectIndex={setSelectIndex} />
+        <TodoList setSelectedId={setSelectedId} />
       </AppLayout>
       {mode.mode === "add" ? <AddTodoList /> : null}
       {mode.mode === "delete" ? (
-        <TodoListDeletePopup selectIndex={selectIndex} />
+        <TodoListDeletePopup selectedId={selectedId} />
+      ) : null}
+      {mode.mode === "edit" ? (
+        <TodoListEditTitlePopup selectedId={selectedId} />
       ) : null}
       {/* <TodoDetailPopup /> */}
       {/* <TodoListSearchPopup /> */}
