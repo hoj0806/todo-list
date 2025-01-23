@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import DeleteHashTagIcon from "../assets/icon/deleteHasgTag.svg";
 import { returnDefault } from "../slice/modeSlice";
 import { useState } from "react";
 import { editMemo } from "../slice/todoSlice";
+import Popuphashtag from "./Popuphashtag";
 
 function TodoDetailPopup({ selectedId }) {
   const todoList = useSelector((state) => state.todoSlice.todoList);
@@ -10,6 +10,8 @@ function TodoDetailPopup({ selectedId }) {
   const dispatch = useDispatch();
 
   const [memoContent, setMemoContent] = useState("");
+
+  const haasgTags = findList.hashtags;
 
   function onChangeMemo(e) {
     setMemoContent(e.target.value);
@@ -36,12 +38,10 @@ function TodoDetailPopup({ selectedId }) {
           <button onClick={() => onClickMemoButton(memoContent)}>
             메모 수정
           </button>
-          <div className='w-12 h-4 text-[8px] bg-black text-white rounded-[8px] flex items-center px-1 gap-1 desktop:w-[100px] desktop:h-[32px] desktop:rounded-3xl desktop:px-2 desktop:gap-2'>
-            <img
-              src={DeleteHashTagIcon}
-              className='w-2 h-2 desktop:w-4 desktop:h-4'
-            />
-            <p className='desktop:text-[14px]'>해시태그</p>
+          <div className='flex gap-1'>
+            {haasgTags.map((tag, index) => (
+              <Popuphashtag key={index} tag={tag} />
+            ))}
           </div>
         </div>
 
