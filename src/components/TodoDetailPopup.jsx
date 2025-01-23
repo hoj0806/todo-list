@@ -40,7 +40,12 @@ function TodoDetailPopup({ selectedId }) {
           </button>
           <div className='flex gap-1'>
             {haasgTags.map((tag, index) => (
-              <Popuphashtag key={index} tag={tag} />
+              <Popuphashtag
+                key={index}
+                tag={tag}
+                index={index}
+                selectedId={selectedId}
+              />
             ))}
           </div>
         </div>

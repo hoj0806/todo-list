@@ -84,9 +84,31 @@ const todoSlice = createSlice({
         todo.memo = action.payload.memo;
       },
     },
+    deleteHasgtag: {
+      prepare(id, hasgtagIndex) {
+        return {
+          payload: {
+            id,
+            hasgtagIndex,
+          },
+        };
+      },
+      reducer(state, action) {
+        const todo = state.todoList.find(
+          (todo) => todo.id === action.payload.id
+        );
+        todo.hashtags.splice(action.payload.hasgtagIndex, 1);
+      },
+    },
   },
 });
 
 export default todoSlice;
-export const { addList, checkList, deleteList, editTitle, editMemo } =
-  todoSlice.actions;
+export const {
+  addList,
+  checkList,
+  deleteList,
+  editTitle,
+  editMemo,
+  deleteHasgtag,
+} = todoSlice.actions;
