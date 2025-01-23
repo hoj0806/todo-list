@@ -8,6 +8,7 @@ import MobileFeatureLayout from "./layout/MobileFeatureLayout";
 
 import TodoListItemPopup from "./components/TodoListDeletePopup";
 import TodoListSearchPopup from "./components/TodoListSearchPopup";
+import TodoDetailPopup from "./components/TodoDetailPopup";
 import { useSelector } from "react-redux";
 import AddTodoList from "./components/AddTodoList";
 import TodoListDeletePopup from "./components/TodoListDeletePopup";
@@ -34,7 +35,10 @@ function App() {
       {mode.mode === "edit" ? (
         <TodoListEditTitlePopup selectedId={selectedId} />
       ) : null}
-      {/* <TodoDetailPopup /> */}
+      {mode.mode === "listDetail" ? (
+        <TodoDetailPopup selectedId={selectedId} />
+      ) : null}
+
       {/* <TodoListSearchPopup /> */}
     </Wrapper>
   );
