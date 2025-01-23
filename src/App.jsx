@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import AddTodoList from "./components/AddTodoList";
 import TodoListDeletePopup from "./components/TodoListDeletePopup";
 import { useState } from "react";
+import TodoListEditTitlePopup from "./components/TodoListEditTitlePopup";
 
 function App() {
   const mode = useSelector((state) => state.modeSlice);
@@ -29,6 +30,9 @@ function App() {
       {mode.mode === "add" ? <AddTodoList /> : null}
       {mode.mode === "delete" ? (
         <TodoListDeletePopup selectIndex={selectIndex} />
+      ) : null}
+      {mode.mode === "edit" ? (
+        <TodoListEditTitlePopup selectIndex={selectIndex} />
       ) : null}
       {/* <TodoDetailPopup /> */}
       {/* <TodoListSearchPopup /> */}

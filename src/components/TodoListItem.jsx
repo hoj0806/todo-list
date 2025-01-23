@@ -15,11 +15,14 @@ function TodoListItem({ todo, index, setSelectIndex }) {
   }
 
   function onClickDeleteButton() {
-    setSelectIndex(index);
     dispatch(modifyMode("delete"));
   }
+
+  function onClickEditButton() {
+    dispatch(modifyMode("edit"));
+  }
   return (
-    <div>
+    <div onClick={() => setSelectIndex(index)}>
       <li className='bg-orange h-[58px] rounded-2xl px-3 flex items-center desktop:h-[120px] desktop:px-[34px]'>
         <button onClick={() => checkTodoList()}>
           <img
@@ -35,7 +38,10 @@ function TodoListItem({ todo, index, setSelectIndex }) {
           {title}
         </p>
         <div className='flex gap-3 desktop:gap-6'>
-          <button className='desktop:w-[132px] desktop:h-[72px] desktop:bg-green desktop:rounded-xl'>
+          <button
+            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-green desktop:rounded-xl'
+            onClick={onClickEditButton}
+          >
             <img
               src={editIcon}
               className='desktop:mx-auto desktop:w-[50px] desktop:h-[50px]'
