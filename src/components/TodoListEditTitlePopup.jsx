@@ -4,7 +4,7 @@ import { editTitle } from "../slice/todoSlice";
 import { useState } from "react";
 
 function TodoListEditTitlePopup({ selectedId }) {
-  const todo = useSelector((state) => state.todoSlice);
+  const todo = useSelector((state) => state.todoSlice.todoList);
   const dispatch = useDispatch();
   const findTodoList = todo.find((todo) => todo.id === selectedId);
 
@@ -24,7 +24,6 @@ function TodoListEditTitlePopup({ selectedId }) {
         <input
           className='mb-9 text-center'
           defaultValue={findTodoList.title}
-          //   value={}
           onChange={onChangeTitle}
         />
         <p className='text-sm grow desktop:text-[24px]'>

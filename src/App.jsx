@@ -16,7 +16,6 @@ import TodoListEditTitlePopup from "./components/TodoListEditTitlePopup";
 
 function App() {
   const mode = useSelector((state) => state.modeSlice);
-  const [selectIndex, setSelectIndex] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   return (
     <Wrapper>
@@ -26,14 +25,11 @@ function App() {
           <SearchBar />
           <AddButton />
         </MobileFeatureLayout>
-        <TodoList
-          setSelectIndex={setSelectIndex}
-          setSelectedId={setSelectedId}
-        />
+        <TodoList setSelectedId={setSelectedId} />
       </AppLayout>
       {mode.mode === "add" ? <AddTodoList /> : null}
       {mode.mode === "delete" ? (
-        <TodoListDeletePopup selectIndex={selectIndex} />
+        <TodoListDeletePopup selectedId={selectedId} />
       ) : null}
       {mode.mode === "edit" ? (
         <TodoListEditTitlePopup selectedId={selectedId} />

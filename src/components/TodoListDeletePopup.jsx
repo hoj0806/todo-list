@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
 import { returnDefault } from "../slice/modeSlice";
 import { deleteList } from "../slice/todoSlice";
-function TodoListDeletePopup({ selectIndex }) {
+function TodoListDeletePopup({ selectedId }) {
   const dispatch = useDispatch();
 
   function onClickConfirmedDeleteList() {
-    dispatch(deleteList(selectIndex));
+    dispatch(deleteList(selectedId));
     dispatch(returnDefault());
   }
   return (

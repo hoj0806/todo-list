@@ -6,12 +6,12 @@ import deleteIcon from "../assets/icon/delete.svg";
 import { useDispatch } from "react-redux";
 import { checkList } from "../slice/todoSlice";
 import { modifyMode } from "../slice/modeSlice";
-function TodoListItem({ todo, index, setSelectIndex, setSelectedId }) {
+function TodoListItem({ todo, setSelectedId }) {
   const dispatch = useDispatch();
   const { title, checked, id } = todo;
 
   function checkTodoList() {
-    dispatch(checkList(index));
+    dispatch(checkList(id));
   }
 
   function onClickDeleteButton() {
