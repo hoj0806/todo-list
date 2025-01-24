@@ -9,23 +9,31 @@ import MobileFeatureLayout from "./layout/MobileFeatureLayout";
 import TodoListItemPopup from "./components/TodoListDeletePopup";
 import TodoListSearchPopup from "./components/TodoListSearchPopup";
 import TodoDetailPopup from "./components/TodoDetailPopup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AddTodoList from "./components/AddTodoList";
 import TodoListDeletePopup from "./components/TodoListDeletePopup";
 import { useState } from "react";
 import TodoListEditTitlePopup from "./components/TodoListEditTitlePopup";
+import { setSearchTerm } from "./slice/todoSlice";
 
 function App() {
   const mode = useSelector((state) => state.modeSlice);
+  const dispatch = useDispatch();
   const [selectedId, setSelectedId] = useState(null);
+
+  function onChangeSearchValue(e) {
+    dispatch(setSearchTerm(e.target.value));
+  }
+
   return (
     <Wrapper>
       <AppLayout>
         <Header />
         <MobileFeatureLayout>
-          <SearchBar />
+          <SearchBar onChangeSearchValue={onChangeSearchValue} />
           <AddButton />
         </MobileFeatureLayout>
+
         <TodoList setSelectedId={setSelectedId} />
       </AppLayout>
       {mode.mode === "add" ? <AddTodoList /> : null}
