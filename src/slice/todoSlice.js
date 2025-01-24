@@ -27,6 +27,7 @@ const initialState = {
       memo: "세시간 정도는 하기",
     },
   ],
+  searchTerm: "",
 };
 
 const todoSlice = createSlice({
@@ -117,6 +118,9 @@ const todoSlice = createSlice({
         hasgTags.push(action.payload.hasgTagContent);
       },
     },
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
   },
 });
 
@@ -129,4 +133,6 @@ export const {
   editMemo,
   deleteHasgtag,
   addHasgtag,
+  searchList,
+  setSearchTerm,
 } = todoSlice.actions;
