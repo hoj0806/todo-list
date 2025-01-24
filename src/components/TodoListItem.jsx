@@ -6,9 +6,10 @@ import deleteIcon from "../assets/icon/delete.svg";
 import { useDispatch } from "react-redux";
 import { checkList } from "../slice/todoSlice";
 import { modifyMode } from "../slice/modeSlice";
+import TodoListHashtag from "./TodoListHashtag";
 function TodoListItem({ todo, setSelectedId }) {
   const dispatch = useDispatch();
-  const { title, checked, id } = todo;
+  const { title, checked, id, hashtags } = todo;
 
   function checkTodoList() {
     dispatch(checkList(id));
@@ -35,14 +36,20 @@ function TodoListItem({ todo, setSelectedId }) {
             className='mr-3 desktop:h-[58px] desktop:w-[58px] desktop:mr-6'
           />
         </button>
-        <p
-          className={`font-bold text-xl grow desktop:text-[48px] ${
+        <div
+          className={`relative font-bold text-xl grow desktop:text-[48px] ${
             checked && "line-through"
           }`}
           onClick={onClickListTitle}
         >
-          {title}
-        </p>
+          <p>{title}</p>
+          <div className='absolute top-6 flex gap-2'>
+            {hashtags.map((tag, index) => (
+              <TodoListHashtag key={index} tag={tag} />
+            ))}
+          </div>
+        </div>
+
         <div className='flex gap-3 desktop:gap-6'>
           <button
             className='desktop:w-[132px] desktop:h-[72px] desktop:bg-green desktop:rounded-xl'
