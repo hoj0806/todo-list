@@ -12,7 +12,6 @@ function TodoDetailPopup({ selectedId }) {
   const [memoContent, setMemoContent] = useState("");
   const [hashtagInputValue, setTagInputValue] = useState("");
   const hashTags = findList.hashtags;
-  console.log(hashTags);
 
   function onChangeMemo(e) {
     setMemoContent(e.target.value);
