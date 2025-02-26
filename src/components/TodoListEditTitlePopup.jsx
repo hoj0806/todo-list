@@ -8,7 +8,6 @@ function TodoListEditTitlePopup({ selectedId }) {
 
   const todo = useSelector((state) => state.todoSlice.todoList);
   const findTodoList = todo.find((todo) => todo.id === selectedId);
-  console.log(findTodoList);
   const [titleValue, setTitleValue] = useState("");
   const [viewErrorMessage, setViewErrorMessage] = useState(false);
 
