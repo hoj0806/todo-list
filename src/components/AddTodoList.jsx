@@ -30,7 +30,16 @@ function AddTodoList() {
         {errorMessage && (
           <div className='text-rose-600'>일정을 입력해주세요</div>
         )}
-        <input value={listTitle} onChange={handleChange} maxLength={12} />
+        <input
+          value={listTitle}
+          onChange={handleChange}
+          maxLength={12}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              submitAddList(listTitle);
+            }
+          }}
+        />
         <div className='flex justify-center gap-6'>
           <button
             className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px]'
