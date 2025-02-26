@@ -4,14 +4,19 @@ import { returnDefault } from "../slice/modeSlice";
 import { addList } from "../slice/todoSlice";
 function AddTodoList() {
   const [listTitle, setListTitle] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
   const dispatch = useDispatch();
 
   function handleChange(e) {
+    setErrorMessage(false);
     setListTitle(e.target.value);
   }
 
   function submitAddList(listTitle) {
-    if (listTitle === "") return;
+    if (listTitle.trim() === "" || listTitle.length > 12) {
+      setErrorMessage(true);
+      return;
+    }
     dispatch(addList(listTitle));
     dispatch(returnDefault());
   }
@@ -22,7 +27,10 @@ function AddTodoList() {
         <p className='text-xl font-bold mb-9 desktop:text-[48px] desktop:mb-[65px]'>
           일정 추가
         </p>
-        <input value={listTitle} onChange={handleChange} />
+        {errorMessage && (
+          <div className='text-rose-600'>일정을 입력해주세요</div>
+        )}
+        <input value={listTitle} onChange={handleChange} maxLength={12} />
         <div className='flex justify-center gap-6'>
           <button
             className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px]'
