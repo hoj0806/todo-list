@@ -9,16 +9,14 @@ function TodoDetailPopup({ selectedId }) {
   const findList = todoList.find((todo) => todo.id === selectedId);
   const dispatch = useDispatch();
 
-  const [memoContent, setMemoContent] = useState("");
+  const [memoContent, setMemoContent] = useState(findList.memo);
   const [hashtagInputValue, setTagInputValue] = useState("");
   const hashTags = findList.hashtags;
 
   function onChangeMemo(e) {
-    setMemoContent(e.target.value);
-  }
-
-  function onClickMemoButton(memo) {
-    dispatch(editMemo(selectedId, memo));
+    if (memoContent.length <= 300) {
+      setMemoContent(e.target.value.trim());
+    }
   }
 
   function onKeyDown(e) {
@@ -31,6 +29,11 @@ function TodoDetailPopup({ selectedId }) {
   function onChangeHasgTagInput(e) {
     setTagInputValue(e.target.value);
   }
+
+  function onClickMemoSubmitButton() {
+    dispatch(editMemo(selectedId, memoContent));
+    dispatch(returnDefault());
+  }
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
       <div className='w-[320px] h-[360px] bg-yellow rounded-xl pt-4 pb-2 px-[15px] text-center flex flex-col mx-auto mt-[120px] gap-3 desktop:w-[800px] desktop:h-[600px] desktop:mt-[60px] desktop:pt-[34px] desktop:px-[40px] desktop:pb-[30px]'>
@@ -39,22 +42,23 @@ function TodoDetailPopup({ selectedId }) {
         </p>
 
         <div className='text-right grow'>
-          <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2'>
-            2025.01.01
-          </p>
+          <div className='flex justify-between'>
+            <p>{memoContent.length} / 300</p>
+            <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2'>
+              2025.01.01
+            </p>
+          </div>
           <textarea
             className='bg-green w-full h-[200px] text-left rounded-[8px] desktop:h-[350px]'
             defaultValue={findList.memo}
             onChange={onChangeMemo}
+            maxLength={300}
           />
           <input
             onKeyDown={onKeyDown}
             onChange={onChangeHasgTagInput}
             value={hashtagInputValue}
           />
-          <button onClick={() => onClickMemoButton(memoContent)}>
-            메모 수정
-          </button>
 
           {hashTags.length !== 0 ? (
             <div className='flex gap-1'>
@@ -74,7 +78,7 @@ function TodoDetailPopup({ selectedId }) {
 
         <button
           className='bg-white-10 text-sm w-[76px] rounded-[4px] self-end desktop:w-[100px] h-[40px]'
-          onClick={() => dispatch(returnDefault())}
+          onClick={onClickMemoSubmitButton}
         >
           확인
         </button>
