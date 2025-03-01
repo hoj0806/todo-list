@@ -9,16 +9,12 @@ function TodoDetailPopup({ selectedId }) {
   const findList = todoList.find((todo) => todo.id === selectedId);
   const dispatch = useDispatch();
 
-  const [memoContent, setMemoContent] = useState("");
+  const [memoContent, setMemoContent] = useState(findList.memo);
   const [hashtagInputValue, setTagInputValue] = useState("");
   const hashTags = findList.hashtags;
 
   function onChangeMemo(e) {
     setMemoContent(e.target.value);
-  }
-
-  function onClickMemoButton(memo) {
-    dispatch(editMemo(selectedId, memo));
   }
 
   function onKeyDown(e) {
@@ -30,6 +26,11 @@ function TodoDetailPopup({ selectedId }) {
 
   function onChangeHasgTagInput(e) {
     setTagInputValue(e.target.value);
+  }
+
+  function onClickMemoSubmitButton() {
+    dispatch(editMemo(selectedId, memoContent));
+    dispatch(returnDefault());
   }
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
@@ -52,9 +53,6 @@ function TodoDetailPopup({ selectedId }) {
             onChange={onChangeHasgTagInput}
             value={hashtagInputValue}
           />
-          <button onClick={() => onClickMemoButton(memoContent)}>
-            메모 수정
-          </button>
 
           {hashTags.length !== 0 ? (
             <div className='flex gap-1'>
@@ -74,7 +72,7 @@ function TodoDetailPopup({ selectedId }) {
 
         <button
           className='bg-white-10 text-sm w-[76px] rounded-[4px] self-end desktop:w-[100px] h-[40px]'
-          onClick={() => dispatch(returnDefault())}
+          onClick={onClickMemoSubmitButton}
         >
           확인
         </button>
