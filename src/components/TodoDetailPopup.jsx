@@ -47,7 +47,7 @@ function TodoDetailPopup({ selectedId }) {
           <div className='flex justify-between'>
             <p>{memoContent.length} / 300</p>
             <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2'>
-              2025.01.01
+              {findList.date}
             </p>
           </div>
           <textarea
