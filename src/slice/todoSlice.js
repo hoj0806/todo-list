@@ -5,7 +5,7 @@ const initialState = {
     {
       title: "밥먹기",
       checked: false,
-      date: "2024/01/01",
+      date: "2024년 01월 01일",
       hashtags: ["test1", "test2", "test33"],
       id: 1,
       memo: "오늘 점심은 돈까스",
@@ -13,7 +13,7 @@ const initialState = {
     {
       title: "씻기",
       checked: true,
-      date: "2024/02/01",
+      date: "2024년 02월 01일",
       hashtags: ["test1", "test2", "test33"],
       id: 2,
       memo: "치실하기",
@@ -21,7 +21,7 @@ const initialState = {
     {
       title: "공부하기",
       checked: false,
-      date: "2024/03/01",
+      date: "2024년 03월 01일",
       hashtags: ["test1", "test2", "test33"],
       id: 3,
       memo: "세시간 정도는 하기",
@@ -34,16 +34,27 @@ const todoSlice = createSlice({
   name: "todoSlice",
   initialState,
   reducers: {
-    addList: (state, action) => {
-      state.todoList.push({
-        title: action.payload,
-        checked: false,
-        date: "2024/01/01",
-        hashtags: [],
-        id: Date.now(),
-        memo: "",
-      });
+    addList: {
+      prepare(title, date) {
+        return {
+          payload: {
+            title,
+            date,
+          },
+        };
+      },
+      reducer(state, action) {
+        state.todoList.push({
+          title: action.payload.title,
+          checked: false,
+          date: action.payload.date,
+          hashtags: [],
+          id: Date.now(),
+          memo: "",
+        });
+      },
     },
+
     checkList: (state, action) => {
       const todo = state.todoList.find((todo) => todo.id === action.payload);
       todo.checked = !todo.checked;
