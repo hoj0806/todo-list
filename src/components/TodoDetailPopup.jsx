@@ -14,7 +14,9 @@ function TodoDetailPopup({ selectedId }) {
   const hashTags = findList.hashtags;
 
   function onChangeMemo(e) {
-    setMemoContent(e.target.value);
+    if (memoContent.length <= 300) {
+      setMemoContent(e.target.value.trim());
+    }
   }
 
   function onKeyDown(e) {
@@ -40,13 +42,17 @@ function TodoDetailPopup({ selectedId }) {
         </p>
 
         <div className='text-right grow'>
-          <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2'>
-            2025.01.01
-          </p>
+          <div className='flex justify-between'>
+            <p>{memoContent.length} / 300</p>
+            <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2'>
+              2025.01.01
+            </p>
+          </div>
           <textarea
             className='bg-green w-full h-[200px] text-left rounded-[8px] desktop:h-[350px]'
             defaultValue={findList.memo}
             onChange={onChangeMemo}
+            maxLength={300}
           />
           <input
             onKeyDown={onKeyDown}
