@@ -20,9 +20,11 @@ function TodoDetailPopup({ selectedId }) {
   }
 
   function onKeyDown(e) {
-    if (e.key === "Enter") {
-      dispatch(addHasgtag(selectedId, hashtagInputValue));
-      setTagInputValue("");
+    if (hashTags.length < 5) {
+      if (e.key === "Enter") {
+        dispatch(addHasgtag(selectedId, hashtagInputValue));
+        setTagInputValue("");
+      }
     }
   }
 
@@ -49,15 +51,10 @@ function TodoDetailPopup({ selectedId }) {
             </p>
           </div>
           <textarea
-            className='bg-green w-full h-[200px] text-left rounded-[8px] desktop:h-[350px]'
+            className='bg-green w-full h-[200px] text-left rounded-[8px] desktop:h-[350px] outline-none'
             defaultValue={findList.memo}
             onChange={onChangeMemo}
             maxLength={300}
-          />
-          <input
-            onKeyDown={onKeyDown}
-            onChange={onChangeHasgTagInput}
-            value={hashtagInputValue}
           />
 
           {hashTags.length !== 0 ? (
@@ -74,6 +71,14 @@ function TodoDetailPopup({ selectedId }) {
           ) : (
             <p>해시태그를 추가해보세요</p>
           )}
+          <input
+            onKeyDown={onKeyDown}
+            onChange={onChangeHasgTagInput}
+            value={hashtagInputValue}
+            maxLength={7}
+            placeholder='태그추가'
+            className='outline-none bg-none'
+          />
         </div>
 
         <button
