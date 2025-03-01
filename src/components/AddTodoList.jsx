@@ -6,18 +6,25 @@ function AddTodoList() {
   const [listTitle, setListTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
   const dispatch = useDispatch();
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+
+  const dateString = `${year}년 ${month}월 ${day}일`;
 
   function handleChange(e) {
     setErrorMessage(false);
     setListTitle(e.target.value);
   }
 
-  function submitAddList(listTitle) {
+  function submitAddList() {
     if (listTitle.trim() === "" || listTitle.length > 12) {
       setErrorMessage(true);
       return;
     }
-    dispatch(addList(listTitle));
+    dispatch(addList(listTitle, dateString));
     dispatch(returnDefault());
   }
 
@@ -36,14 +43,14 @@ function AddTodoList() {
           maxLength={12}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              submitAddList(listTitle);
+              submitAddList();
             }
           }}
         />
         <div className='flex justify-center gap-6'>
           <button
             className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px]'
-            onClick={() => submitAddList(listTitle)}
+            onClick={submitAddList}
           >
             추가
           </button>
