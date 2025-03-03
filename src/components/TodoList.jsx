@@ -18,22 +18,19 @@ function TodoList({ setSelectedId }) {
       })
     : todoList;
 
+  if (filteredList.length === 0) return <NoSearchData />;
   return (
     <>
-      {filteredList.length === 0 ? (
-        <NoSearchData />
-      ) : (
-        <ul className='pl-3 pr-4 py-7 flex flex-col gap-2 grow overflow-auto desktop:border-t-[1px] desktop:pl-6 desktop:gap-7'>
-          {filteredList.map((todo, index) => (
-            <TodoListItem
-              todo={todo}
-              index={index}
-              key={todo.id}
-              setSelectedId={setSelectedId}
-            />
-          ))}
-        </ul>
-      )}
+      <ul className='pl-3 pr-4 py-7 flex flex-col gap-2 grow overflow-auto desktop:border-t-[1px] desktop:pl-6 desktop:gap-7'>
+        {filteredList.map((todo, index) => (
+          <TodoListItem
+            todo={todo}
+            index={index}
+            key={todo.id}
+            setSelectedId={setSelectedId}
+          />
+        ))}
+      </ul>
     </>
   );
 }

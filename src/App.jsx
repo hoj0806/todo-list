@@ -33,7 +33,6 @@ function App() {
           <SearchBar onChangeSearchValue={onChangeSearchValue} />
           <AddButton />
         </MobileFeatureLayout>
-
         <TodoList setSelectedId={setSelectedId} />
       </AppLayout>
       {mode.mode === "add" ? <AddTodoList /> : null}
