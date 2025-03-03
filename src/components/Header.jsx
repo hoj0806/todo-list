@@ -10,11 +10,16 @@ function Header() {
   const isDark = useSelector((state) => state.darkModeSlice.isDark);
   const dispatch = useDispatch();
 
+  function saveDarkMode(mode) {
+    localStorage.setItem("theme", mode);
+  }
   function toggleHandler() {
     if (isDark) {
       dispatch(lightMode());
+      saveDarkMode("light");
     } else {
       dispatch(darkMode());
+      saveDarkMode("dark");
     }
   }
   return (
