@@ -1,14 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoSlice from "./slice/todoSlice";
-import modeSlice from "./slice/modeSlice";
-import darkModeSlice from "./slice/darkModeSlice";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+import rootReducer from "./store/rootReducer";
+
+const persisConfig = {
+  key: "root",
+  storage,
+  whitelist: ["todoSlice"],
+};
+
+const reducer = persistReducer(persisConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    todoSlice: todoSlice.reducer,
-    modeSlice: modeSlice.reducer,
-    darkModeSlice: darkModeSlice.reducer,
-  },
+  reducer,
 });
 
 export default store;
