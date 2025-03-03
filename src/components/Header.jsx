@@ -6,6 +6,7 @@ import DesktopHeaderButton from "./DesktopHeaderButton";
 import AppLogo from "./AppLogo";
 import { useDispatch, useSelector } from "react-redux";
 import { darkMode, lightMode } from "../slice/darkModeSlice";
+import { useEffect } from "react";
 function Header() {
   const isDark = useSelector((state) => state.darkModeSlice.isDark);
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function Header() {
   function saveDarkMode(mode) {
     localStorage.setItem("theme", mode);
   }
+
   function toggleHandler() {
     if (isDark) {
       dispatch(lightMode());
@@ -22,6 +24,19 @@ function Header() {
       saveDarkMode("dark");
     }
   }
+
+  useEffect(() => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      dispatch(darkMode());
+    } else {
+      dispatch(lightMode());
+    }
+  }, [dispatch]);
+
   return (
     <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4 relative'>
       <AppLogo />
