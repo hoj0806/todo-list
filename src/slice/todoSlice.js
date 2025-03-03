@@ -44,14 +44,18 @@ const todoSlice = createSlice({
         };
       },
       reducer(state, action) {
-        state.todoList.push({
+        let addList = {
           title: action.payload.title,
           checked: false,
           date: action.payload.date,
           hashtags: [],
           id: Date.now(),
           memo: "",
-        });
+        };
+        state.todoList.push(addList);
+        let localList = JSON.parse(localStorage.getItem("list"));
+        localList.push(addList);
+        localStorage.setItem("list", JSON.stringify(localList));
       },
     },
 
@@ -64,6 +68,7 @@ const todoSlice = createSlice({
         (todo) => todo.id != action.payload
       );
     },
+
     editTitle: {
       prepare(id, title) {
         return {
