@@ -10,6 +10,13 @@ function Header() {
   const isDark = useSelector((state) => state.darkModeSlice.isDark);
   const dispatch = useDispatch();
 
+  function toggleHandler() {
+    if (isDark) {
+      dispatch(lightMode());
+    } else {
+      dispatch(darkMode());
+    }
+  }
   return (
     <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4 relative'>
       <AppLogo />
@@ -17,7 +24,7 @@ function Header() {
       <img
         src={isDark ? DarkModeIcon : LightModeIcon}
         className='w-6 h-6 ml-auto desktop:hidden cursor-pointer'
-        onClick={() => (isDark ? dispatch(lightMode()) : dispatch(darkMode()))}
+        onClick={toggleHandler}
       />
 
       <DesktopHeaderButton>
