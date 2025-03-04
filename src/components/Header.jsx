@@ -38,7 +38,7 @@ function Header() {
   }, [dispatch]);
 
   return (
-    <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4 relative'>
+    <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4'>
       <AppLogo />
 
       <img
@@ -46,16 +46,20 @@ function Header() {
         className='w-6 h-6 ml-auto desktop:hidden cursor-pointer'
         onClick={toggleHandler}
       />
+      <div className='flex justify-between w-full self-end'>
+        <DesktopHeaderButton>
+          <img src={SearchIcon} className='mx-auto' />
+        </DesktopHeaderButton>
 
-      <DesktopHeaderButton>
-        <img src={SearchIcon} className='mx-auto' />
-      </DesktopHeaderButton>
-      <DesktopHeaderButton rightPostion={4}>
-        <img src={AddIcon} className='mx-auto w-[52px] h-[52px]' />
-      </DesktopHeaderButton>
-      <DesktopHeaderButton rightPostion={"[156px]"}>
-        <img src={LightModeIcon} className='mx-auto w-[52px] h-[52px]' />
-      </DesktopHeaderButton>
+        <div className='flex gap-7'>
+          <DesktopHeaderButton>
+            <img src={LightModeIcon} className='mx-auto w-[52px] h-[52px]' />
+          </DesktopHeaderButton>
+          <DesktopHeaderButton>
+            <img src={AddIcon} className='mx-auto w-[52px] h-[52px]' />
+          </DesktopHeaderButton>
+        </div>
+      </div>
     </header>
   );
 }
