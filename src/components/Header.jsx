@@ -56,8 +56,11 @@ function Header() {
         </DesktopHeaderButton>
 
         <div className='flex gap-7'>
-          <DesktopHeaderButton>
-            <img src={LightModeIcon} className='mx-auto w-[52px] h-[52px]' />
+          <DesktopHeaderButton onClick={toggleHandler}>
+            <img
+              src={isDark ? DarkModeIcon : LightModeIcon}
+              className='mx-auto w-[52px] h-[52px]'
+            />
           </DesktopHeaderButton>
           <DesktopHeaderButton onClick={onClickAddButton}>
             <img src={AddIcon} className='mx-auto w-[52px] h-[52px]' />
