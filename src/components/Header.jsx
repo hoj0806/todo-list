@@ -7,6 +7,7 @@ import AppLogo from "./AppLogo";
 import { useDispatch, useSelector } from "react-redux";
 import { darkMode, lightMode } from "../slice/darkModeSlice";
 import { useEffect } from "react";
+import { modifyMode } from "../slice/modeSlice";
 function Header() {
   const isDark = useSelector((state) => state.darkModeSlice.isDark);
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function Header() {
     }
   }, [dispatch]);
 
+  function onClickAddButton() {
+    dispatch(modifyMode("add"));
+  }
   return (
     <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4'>
       <AppLogo />
@@ -55,7 +59,7 @@ function Header() {
           <DesktopHeaderButton>
             <img src={LightModeIcon} className='mx-auto w-[52px] h-[52px]' />
           </DesktopHeaderButton>
-          <DesktopHeaderButton>
+          <DesktopHeaderButton onClick={onClickAddButton}>
             <img src={AddIcon} className='mx-auto w-[52px] h-[52px]' />
           </DesktopHeaderButton>
         </div>
