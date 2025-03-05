@@ -1,9 +1,10 @@
-import SearchItem from "./SearchItem";
+import SearchItem from "./PopupSearchListItem";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupSearchTerm } from "../slice/todoSlice";
 import { modifyMode } from "../slice/modeSlice";
+import PopupSearchListItem from "./PopupSearchListItem";
 
-function TodoListSearchPopup() {
+function TodoListSearchPopup({ setSelectedId }) {
   const dispatch = useDispatch();
   const popupSearchTerm = useSelector(
     (state) => state.todoSlice.popupSearhTerm
@@ -42,7 +43,11 @@ function TodoListSearchPopup() {
         />
         <ul className='w-[550px] h-[400px] bg-orange mx-auto overflow-y-auto pt-4'>
           {filteredList.map((todo) => (
-            <SearchItem todo={todo} key={todo.id} />
+            <PopupSearchListItem
+              todo={todo}
+              key={todo.id}
+              setSelectedId={setSelectedId}
+            />
           ))}
         </ul>
       </div>

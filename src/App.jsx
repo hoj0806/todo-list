@@ -46,7 +46,9 @@ function App() {
         <TodoDetailPopup selectedId={selectedId} />
       ) : null}
 
-      {mode.mode === "listSearch" ? <TodoListSearchPopup /> : null}
+      {mode.mode === "listSearch" ? (
+        <TodoListSearchPopup setSelectedId={setSelectedId} />
+      ) : null}
     </Wrapper>
   );
 }
