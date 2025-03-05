@@ -23,13 +23,12 @@ function TodoListItem({ todo, setSelectedId }) {
     dispatch(modifyMode("edit"));
   }
 
-  function onClickList() {
-    setSelectedId(id);
+  function onClickListTitle() {
     dispatch(modifyMode("listDetail"));
   }
 
   return (
-    <div onClick={onClickList}>
+    <div onClick={() => setSelectedId(id)}>
       <li className='bg-orange dark:bg-black h-[58px] rounded-2xl px-3 flex items-center desktop:h-[120px] desktop:px-[34px] '>
         <button onClick={() => checkTodoList()}>
           <img
@@ -41,6 +40,7 @@ function TodoListItem({ todo, setSelectedId }) {
           className={`relative font-bold text-xl grow desktop:text-[48px] ${
             checked && "line-through"
           }`}
+          onClick={onClickListTitle}
         >
           <p className='dark:text-white'>{title}</p>
           <div className='absolute top-6 flex gap-2'>
