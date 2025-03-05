@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 
 function TodoList({ setSelectedId }) {
   const todoList = useSelector((state) => state.todoSlice.todoList);
-  const searchTerm = useSelector(
-    (state) => state.todoSlice.searchTerm
+  const searchTerm = (
+    useSelector((state) => state.todoSlice.searchTerm) || ""
   ).toLowerCase();
 
   const filteredList = searchTerm
