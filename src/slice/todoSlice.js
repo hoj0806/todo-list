@@ -28,6 +28,7 @@ const initialState = {
     },
   ],
   searchTerm: "",
+  popupSearhTerm: "",
 };
 
 const todoSlice = createSlice({
@@ -52,10 +53,8 @@ const todoSlice = createSlice({
           id: Date.now(),
           memo: "",
         };
+
         state.todoList.push(addList);
-        let localList = JSON.parse(localStorage.getItem("list"));
-        localList.push(addList);
-        localStorage.setItem("list", JSON.stringify(localList));
       },
     },
 
@@ -137,6 +136,9 @@ const todoSlice = createSlice({
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
+    setPopupSearchTerm: (state, action) => {
+      state.popupSearhTerm = action.payload;
+    },
   },
 });
 
@@ -151,4 +153,5 @@ export const {
   addHasgtag,
   searchList,
   setSearchTerm,
+  setPopupSearchTerm,
 } = todoSlice.actions;
