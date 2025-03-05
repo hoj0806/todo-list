@@ -41,6 +41,10 @@ function Header() {
   function onClickAddButton() {
     dispatch(modifyMode("add"));
   }
+
+  function onClickSearchButton() {
+    dispatch(modifyMode("listSearch"));
+  }
   return (
     <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4'>
       <AppLogo />
@@ -51,7 +55,7 @@ function Header() {
         onClick={toggleHandler}
       />
       <div className='flex justify-between w-full self-end'>
-        <DesktopHeaderButton>
+        <DesktopHeaderButton onClick={onClickSearchButton}>
           <img src={SearchIcon} className='mx-auto' />
         </DesktopHeaderButton>
 

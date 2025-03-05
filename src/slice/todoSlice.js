@@ -52,10 +52,8 @@ const todoSlice = createSlice({
           id: Date.now(),
           memo: "",
         };
+
         state.todoList.push(addList);
-        let localList = JSON.parse(localStorage.getItem("list"));
-        localList.push(addList);
-        localStorage.setItem("list", JSON.stringify(localList));
       },
     },
 
