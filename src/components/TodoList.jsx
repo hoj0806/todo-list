@@ -1,3 +1,4 @@
+import NoList from "./NoList";
 import NoSearchData from "./NoSearchData";
 import TodoListItem from "./TodoListItem";
 import { useSelector } from "react-redux";
@@ -18,8 +19,7 @@ function TodoList({ setSelectedId }) {
       })
     : todoList;
 
-  if (todoList.length === 0)
-    return <div>할 일 목록이 없습니다 일정을 추가 해보세요!</div>;
+  if (todoList.length === 0) return <NoList />;
 
   if (filteredList.length === 0) return <NoSearchData />;
   return (
