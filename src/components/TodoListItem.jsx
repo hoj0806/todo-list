@@ -52,7 +52,7 @@ function TodoListItem({ todo, setSelectedId }) {
 
         <div className='flex gap-3 desktop:gap-6'>
           <button
-            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-green desktop:rounded-xl'
+            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-green desktop:rounded-xl hover:bg-green2'
             onClick={onClickEditButton}
           >
             <img
@@ -61,7 +61,7 @@ function TodoListItem({ todo, setSelectedId }) {
             />
           </button>
           <button
-            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-red desktop:rounded-xl'
+            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-red desktop:rounded-xl hover:bg-red2'
             onClick={onClickDeleteButton}
           >
             <img

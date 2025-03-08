@@ -46,7 +46,7 @@ function Header() {
     dispatch(modifyMode("listSearch"));
   }
   return (
-    <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[120px] desktop:px-5 desktop:pb-4 shrink-0'>
+    <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[120px] desktop:px-6 desktop:pb-4 shrink-0'>
       <AppLogo />
 
       <div className='flex justify-between w-full self-end'>
