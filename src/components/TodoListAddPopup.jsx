@@ -25,7 +25,7 @@ function TodoListAddPopup() {
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
       <div className='w-[340px] h-[200px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[500px] desktop:h-[280px] desktop:mt-[200px] desktop:py-8'>
-        <p className='text-xl font-bold mb-9 desktop:text-[48px] desktop:mb-[65px]'>
+        <p className='text-xl font-bold grow desktop:text-[48px] desktop:mb-[65px]'>
           일정 추가
         </p>
         {errorMessage && (
