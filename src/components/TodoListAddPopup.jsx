@@ -2,17 +2,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { returnDefault } from "../slice/modeSlice";
 import { addList } from "../slice/todoSlice";
-function AddTodoList() {
+import makeDateString from "../util/makeDateString";
+function TodoListAddPopup() {
   const [listTitle, setListTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
   const dispatch = useDispatch();
-  const today = new Date();
-
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
-
-  const dateString = `${year}년 ${month}월 ${day}일`;
 
   function handleChange(e) {
     setErrorMessage(false);
@@ -20,24 +14,25 @@ function AddTodoList() {
   }
 
   function submitAddList() {
-    if (listTitle.trim() === "" || listTitle.length > 12) {
+    if (listTitle.trim() === "") {
       setErrorMessage(true);
       return;
     }
-    dispatch(addList(listTitle, dateString));
+    dispatch(addList(listTitle, makeDateString()));
     dispatch(returnDefault());
   }
 
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
-      <div className='w-[320px] h-[180px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[500px] desktop:h-[280px] desktop:mt-[200px] desktop:py-8'>
-        <p className='text-xl font-bold mb-9 desktop:text-[48px] desktop:mb-[65px]'>
+      <div className='w-[340px] h-[200px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[500px] desktop:h-[280px] desktop:mt-[200px] desktop:py-8'>
+        <p className='text-xl font-bold grow desktop:text-[48px] desktop:mb-[65px]'>
           일정 추가
         </p>
         {errorMessage && (
           <div className='text-rose-600'>일정을 입력해주세요</div>
         )}
         <input
+          className='focus:outline-none bg-transparent  mb-8 w-2/3 mx-auto border-b-2 px-1'
           value={listTitle}
           onChange={handleChange}
           maxLength={12}
@@ -49,13 +44,13 @@ function AddTodoList() {
         />
         <div className='flex justify-center gap-6'>
           <button
-            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px]'
+            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px] hover:bg-black rounded-md hover:text-white'
             onClick={submitAddList}
           >
             추가
           </button>
           <button
-            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px]'
+            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px] hover:bg-black rounded-md hover:text-white'
             onClick={() => dispatch(returnDefault())}
           >
             취소
@@ -66,4 +61,4 @@ function AddTodoList() {
   );
 }
 
-export default AddTodoList;
+export default TodoListAddPopup;

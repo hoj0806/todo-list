@@ -27,9 +27,15 @@ function TodoListEditTitlePopup({ selectedId }) {
 
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
-      <div className='w-[320px] h-[180px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[500px] desktop:h-[280px] desktop:mt-[200px] desktop:py-8'>
+      <div className='w-[340px] h-[200px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[500px] desktop:h-[280px] desktop:mt-[200px] desktop:py-8'>
+        <p className='text-xl font-bold grow desktop:text-[24px]'>
+          일정 이름 수정
+        </p>
+        {viewErrorMessage && (
+          <div className='text-rose-500'>일정 제목을 입력해주세요</div>
+        )}
         <input
-          className='mb-9 text-center'
+          className='focus:outline-none bg-transparent  mb-8 w-2/3 mx-auto border-b-2 px-1'
           onChange={onChangeTitle}
           maxLength={12}
           onKeyDown={(e) => {
@@ -38,24 +44,19 @@ function TodoListEditTitlePopup({ selectedId }) {
             }
           }}
         />
-        <p className='text-sm grow desktop:text-[24px]'>
-          일정을 수정 하겠습니까?
-        </p>
-        {viewErrorMessage && (
-          <div className='text-rose-500'>일정 제목을 입력해주세요</div>
-        )}
+
         <div className='flex justify-center gap-6'>
           <button
-            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px]'
+            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px] hover:bg-black rounded-md hover:text-white'
             onClick={() => onClickEditTitleButton(selectedId)}
           >
-            네
+            확인
           </button>
           <button
-            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px]'
+            className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px] hover:bg-black rounded-md hover:text-white'
             onClick={() => dispatch(returnDefault())}
           >
-            아니요
+            취소
           </button>
         </div>
       </div>

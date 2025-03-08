@@ -7,7 +7,7 @@ function AddButton() {
 
   return (
     <button
-      className='grow h-11 bg-pink'
+      className='grow h-11 bg-pink border-l-0 border-2 border-black hover:bg-red'
       onClick={() => dispatch(modifyMode("add"))}
     >
       <img src={AddIcon} className='mx-auto' />
