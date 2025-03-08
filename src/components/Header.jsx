@@ -49,11 +49,6 @@ function Header() {
     <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4 shrink-0'>
       <AppLogo />
 
-      <img
-        src={isDark ? DarkModeIcon : LightModeIcon}
-        className='w-6 h-6 ml-auto desktop:hidden cursor-pointer'
-        onClick={toggleHandler}
-      />
       <div className='flex justify-between w-full self-end'>
         <DesktopHeaderButton onClick={onClickSearchButton}>
           <img src={SearchIcon} className='mx-auto' />
@@ -71,6 +66,13 @@ function Header() {
           </DesktopHeaderButton>
         </div>
       </div>
+      <button>
+        <img
+          src={isDark ? DarkModeIcon : LightModeIcon}
+          className='w-6 h-6 desktop:hidden cursor-pointer'
+          onClick={toggleHandler}
+        />
+      </button>
     </header>
   );
 }
