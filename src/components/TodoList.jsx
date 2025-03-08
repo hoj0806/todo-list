@@ -24,7 +24,7 @@ function TodoList({ setSelectedId }) {
   if (filteredList.length === 0) return <NoSearchData />;
   return (
     <>
-      <ul className='pl-3 pr-4 py-7 flex flex-col gap-2 grow overflow-auto desktop:border-t-[1px] desktop:pl-6 desktop:gap-7'>
+      <ul className='pl-3 pr-4 py-7 flex flex-col gap-2 flex-grow overflow-auto desktop:border-t-[1px] desktop:pl-6 desktop:gap-7'>
         {filteredList.map((todo) => (
           <TodoListItem
             todo={todo}
