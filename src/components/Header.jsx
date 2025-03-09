@@ -4,6 +4,8 @@ import SearchIcon from "../assets/icon/search.svg";
 import AddIcon from "../assets/icon/add.svg";
 import DesktopHeaderButton from "./DesktopHeaderButton";
 import AppLogo from "./AppLogo";
+import deleteIcon from "../assets/icon/delete.svg";
+
 import { useDispatch, useSelector } from "react-redux";
 import { darkMode, lightMode } from "../slice/darkModeSlice";
 import { useEffect } from "react";
@@ -27,6 +29,9 @@ function Header() {
     }
   }
 
+  function onClickClearAllBtn() {
+    dispatch(modifyMode("clearAll"));
+  }
   useEffect(() => {
     if (
       localStorage.theme === "dark" ||
@@ -52,12 +57,25 @@ function Header() {
   }
   return (
     <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[120px] desktop:px-6 desktop:pb-4 shrink-0'>
+      {todoList.length === 0 ? null : (
+        <button onClick={onClickClearAllBtn} className='desktop:hidden'>
+          <img src={deleteIcon} />
+        </button>
+      )}
+
       <AppLogo />
 
       <div className='flex justify-between w-full self-end'>
-        <DesktopHeaderButton onClick={onClickSearchButton}>
-          <img src={SearchIcon} className='mx-auto' />
-        </DesktopHeaderButton>
+        <div className='flex gap-7'>
+          <DesktopHeaderButton onClick={onClickSearchButton}>
+            <img src={SearchIcon} className='mx-auto' />
+          </DesktopHeaderButton>
+          {todoList.length === 0 ? null : (
+            <DesktopHeaderButton onClick={onClickClearAllBtn}>
+              <img src={deleteIcon} className='mx-auto w-[52px] h-[52px]' />
+            </DesktopHeaderButton>
+          )}
+        </div>
 
         <div className='flex gap-7'>
           <DesktopHeaderButton onClick={toggleHandler}>

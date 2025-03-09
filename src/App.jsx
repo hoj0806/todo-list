@@ -12,24 +12,40 @@ import TodoListDeletePopup from "./components/TodoListDeletePopup";
 import TodoListEditTitlePopup from "./components/TodoListEditTitlePopup";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { setSearchTerm } from "./slice/todoSlice";
+import ClearAllListPopup from "./components/ClearAllListPopup";
+import { useMediaQuery } from "react-responsive";
 
 function App() {
   const mode = useSelector((state) => state.modeSlice);
   const dispatch = useDispatch();
   const [selectedId, setSelectedId] = useState(null);
+  const [inputValue, setInputValue] = useState("");
 
   function onChangeSearchValue(e) {
+    setInputValue(e.target.value);
     dispatch(setSearchTerm(e.target.value));
   }
+
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
+
+  useEffect(() => {
+    if (isDesktop) {
+      dispatch(setSearchTerm(""));
+      setInputValue("");
+    }
+  }, [isDesktop, dispatch]);
 
   return (
     <Wrapper>
       <AppLayout>
         <Header />
         <MobileFeatureLayout>
-          <SearchBar onChangeSearchValue={onChangeSearchValue} />
+          <SearchBar
+            onChangeSearchValue={onChangeSearchValue}
+            inputValue={inputValue}
+          />
           <AddButton />
         </MobileFeatureLayout>
         <TodoList setSelectedId={setSelectedId} />
@@ -48,6 +64,7 @@ function App() {
       {mode.mode === "listSearch" ? (
         <TodoListSearchPopup setSelectedId={setSelectedId} />
       ) : null}
+      {mode.mode === "clearAll" ? <ClearAllListPopup /> : null}
     </Wrapper>
   );
 }
