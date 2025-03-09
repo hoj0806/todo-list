@@ -139,6 +139,9 @@ const todoSlice = createSlice({
     setPopupSearchTerm: (state, action) => {
       state.popupSearhTerm = action.payload;
     },
+    clearAllList: (state) => {
+      state.todoList = [];
+    },
   },
 });
 
@@ -154,4 +157,5 @@ export const {
   searchList,
   setSearchTerm,
   setPopupSearchTerm,
+  clearAllList,
 } = todoSlice.actions;
