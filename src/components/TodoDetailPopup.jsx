@@ -36,7 +36,7 @@ function TodoDetailPopup({ selectedId }) {
   }
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
-      <div className='w-[430px] h-[510px] bg-yellow rounded-xl pt-4 pb-4 px-[15px] text-center flex flex-col mx-auto mt-[240px] gap-3 desktop:w-[820px] desktop:h-[660px] desktop:mt-[180px] desktop:pt-[34px] desktop:px-[20px] desktop:pb-[30px] relative'>
+      <div className='w-[430px] h-[520px] bg-yellow rounded-xl pt-4 pb-4 px-[15px] text-center flex flex-col mx-auto mt-[240px] gap-3 desktop:w-[820px] desktop:h-[660px] desktop:mt-[180px] desktop:pt-[34px] desktop:px-[20px] desktop:pb-[30px] relative'>
         <p className='text-xl font-bold desktop:text-[48px]'>
           {findList.title}
         </p>
@@ -73,9 +73,9 @@ function TodoDetailPopup({ selectedId }) {
             onKeyDown={onKeyDown}
             onChange={onChangeHasgTagInput}
             value={hashtagInputValue}
-            maxLength={7}
+            maxLength={6}
             placeholder='#태그추가'
-            className='outline-none bg-transparent border-b-2 px-[0.5px] w-[80px] absolute bottom-[20px] desktop:text-2xl desktop:w-[150px] desktop:px-1 desktop:bottom-[40px]'
+            className='outline-none bg-transparent border-b-2 px-[0.5px] w-[120px] absolute bottom-[20px] desktop:text-2xl desktop:w-[170px] desktop:px-1 desktop:bottom-[40px]'
           />
         </div>
 

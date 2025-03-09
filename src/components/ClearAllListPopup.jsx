@@ -11,14 +11,14 @@ function ClearAllListPopup() {
   }
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
-      <div className='w-[340px] h-[200px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[500px] desktop:h-[280px] desktop:mt-[200px] desktop:py-8'>
-        <p className='text-xl font-bold mb-10 desktop:text-[48px] desktop:mb-[65px]'>
+      <div className='w-[340px] h-[200px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[550px] desktop:h-[320px] desktop:mt-[250px] desktop:py-8'>
+        <p className='text-xl font-bold grow desktop:text-[36px]'>
           일정 비우기
         </p>
         <p className='text-md grow desktop:text-[24px]'>
           일정을 모두 삭제 하시겠습니까?
         </p>
-        <div className='flex justify-center gap-6'>
+        <div className='flex justify-center gap-6 desktop:mt-5 desktop:gap-14'>
           <button
             className='w-[76px] h-6 bg-white-10 text-sm desktop:w-[120px] desktop:h-[35px] desktop:text-[20px] hover:bg-black rounded-md hover:text-white'
             onClick={onClickSubmitBtn}
