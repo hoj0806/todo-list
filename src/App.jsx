@@ -5,15 +5,14 @@ import Wrapper from "./layout/Wrapper";
 import TodoList from "./components/TodoList";
 import AppLayout from "./layout/AppLayout";
 import MobileFeatureLayout from "./layout/MobileFeatureLayout";
-
-import TodoListItemPopup from "./components/TodoListDeletePopup";
 import TodoListSearchPopup from "./components/TodoListSearchPopup";
 import TodoDetailPopup from "./components/TodoDetailPopup";
-import { useDispatch, useSelector } from "react-redux";
 import TodoListAddPopup from "./components/TodoListAddPopup";
 import TodoListDeletePopup from "./components/TodoListDeletePopup";
-import { useState } from "react";
 import TodoListEditTitlePopup from "./components/TodoListEditTitlePopup";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { setSearchTerm } from "./slice/todoSlice";
 
 function App() {

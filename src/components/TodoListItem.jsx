@@ -28,8 +28,8 @@ function TodoListItem({ todo, setSelectedId }) {
   }
 
   return (
-    <div onClick={() => setSelectedId(id)}>
-      <li className='bg-orange dark:bg-black h-[58px] rounded-2xl px-3 flex items-center desktop:h-[120px] desktop:px-[34px]'>
+    <div onClick={() => setSelectedId(id)} className='cursor-pointer'>
+      <li className='bg-orange dark:bg-black h-[58px] rounded-2xl px-3 flex items-center desktop:h-[120px] desktop:px-[34px] hover:bg-orange2 '>
         <button onClick={() => checkTodoList()}>
           <img
             src={checked ? CheckedIcon : NotCheckedIcon}
@@ -52,7 +52,7 @@ function TodoListItem({ todo, setSelectedId }) {
 
         <div className='flex gap-3 desktop:gap-6'>
           <button
-            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-green desktop:rounded-xl'
+            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-green desktop:rounded-xl hover:bg-green2'
             onClick={onClickEditButton}
           >
             <img
@@ -61,7 +61,7 @@ function TodoListItem({ todo, setSelectedId }) {
             />
           </button>
           <button
-            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-red desktop:rounded-xl'
+            className='desktop:w-[132px] desktop:h-[72px] desktop:bg-red desktop:rounded-xl hover:bg-red2'
             onClick={onClickDeleteButton}
           >
             <img

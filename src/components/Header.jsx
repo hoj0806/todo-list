@@ -11,6 +11,7 @@ import { modifyMode } from "../slice/modeSlice";
 function Header() {
   const isDark = useSelector((state) => state.darkModeSlice.isDark);
   const dispatch = useDispatch();
+  const todoList = useSelector((state) => state.todoSlice.todoList);
 
   function saveDarkMode(mode) {
     localStorage.setItem("theme", mode);
@@ -43,10 +44,14 @@ function Header() {
   }
 
   function onClickSearchButton() {
+    if (todoList.length === 0) {
+      dispatch(modifyMode("add"));
+      return;
+    }
     dispatch(modifyMode("listSearch"));
   }
   return (
-    <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[200px] desktop:px-4 desktop:pb-4 shrink-0'>
+    <header className='h-[56px] flex items-center justify-between px-6 desktop:h-[120px] desktop:px-6 desktop:pb-4 shrink-0'>
       <AppLogo />
 
       <div className='flex justify-between w-full self-end'>
