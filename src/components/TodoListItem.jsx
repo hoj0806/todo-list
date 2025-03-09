@@ -16,10 +16,12 @@ function TodoListItem({ todo, setSelectedId }) {
   }
 
   function onClickDeleteButton() {
+    setSelectedId(id);
     dispatch(modifyMode("delete"));
   }
 
   function onClickEditButton() {
+    setSelectedId(id);
     dispatch(modifyMode("edit"));
   }
 
@@ -30,9 +32,9 @@ function TodoListItem({ todo, setSelectedId }) {
 
   return (
     <li
-      className='bg-orange dark:bg-black h-[58px] rounded-2xl px-3 flex items-center 
+      className='bg-orange dark:bg-black h-[70px] rounded-3xl px-3 flex items-center 
                  desktop:h-[120px] desktop:px-[34px] hover:bg-orange2 
-                 w-full min-w-0'
+                  min-w-0 w-full'
     >
       <button onClick={() => checkTodoList()}>
         <img
@@ -51,7 +53,7 @@ function TodoListItem({ todo, setSelectedId }) {
         >
           {title}
         </span>
-        <div className='absolute top-6 flex gap-2'>
+        <div className='absolute top-7 flex gap-1 desktop:top-11 desktop:gap-2'>
           {hashtags.map((tag, index) => (
             <TodoListHashtag key={index} tag={tag} />
           ))}
