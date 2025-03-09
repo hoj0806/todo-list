@@ -8,14 +8,14 @@ function Popuphashtag({ tag, selectedId, index }) {
     dispatch(deleteHasgtag(selectedId, index));
   }
   return (
-    <div className='w-12 h-4 text-[8px] bg-black text-white rounded-[8px] flex items-center px-1 gap-1 desktop:w-[100px] desktop:h-[32px] desktop:rounded-3xl desktop:px-2 desktop:gap-2'>
+    <div className='h-5 text-[12px] bg-black text-white rounded-3xl flex items-center justify-center px-2 gap-1 desktop:h-[32px] desktop:px-2 desktop:gap-2'>
       <button onClick={() => onClickDeleteHasghtag(selectedId, index)}>
         <img
           src={DeleteHashTagIcon}
-          className='w-2 h-2 desktop:w-4 desktop:h-4'
+          className='w-3 h-3 desktop:w-4 desktop:h-4'
         />
       </button>
-      <p className='desktop:text-[14px]'>{tag}</p>
+      <p className='desktop:text-[18px]'>{tag}</p>
     </div>
   );
 }
