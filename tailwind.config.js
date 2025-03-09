@@ -9,6 +9,7 @@ export default {
     extend: {
       colors: {
         black: "#1F1F1F",
+        "black-10": "#2A2A2A",
         pink: "#FFCFD2",
         red: "#FFADAD",
         red2: "#FF9090",
@@ -25,6 +26,7 @@ export default {
         "white-20": "#FFF8E7",
         gray: "#C0C0C0",
       },
+
       fontWeight: {
         regular: "400",
         bold: "700",

@@ -36,15 +36,17 @@ function TodoDetailPopup({ selectedId }) {
   }
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
-      <div className='w-[430px] h-[520px] bg-yellow rounded-xl pt-4 pb-4 px-[15px] text-center flex flex-col mx-auto mt-[240px] gap-3 desktop:w-[820px] desktop:h-[660px] desktop:mt-[180px] desktop:pt-[34px] desktop:px-[20px] desktop:pb-[30px] relative'>
-        <p className='text-xl font-bold desktop:text-[48px]'>
+      <div className='dark:bg-black-10 w-[430px] h-[520px] bg-yellow rounded-xl pt-4 pb-4 px-[15px] text-center flex flex-col mx-auto mt-[240px] gap-3 desktop:w-[820px] desktop:h-[660px] desktop:mt-[180px] desktop:pt-[34px] desktop:px-[20px] desktop:pb-[30px] relative'>
+        <p className='text-xl font-bold desktop:text-[48px] dark:text-white'>
           {findList.title}
         </p>
 
         <div className='text-left grow'>
           <div className='flex justify-between'>
-            <p className='desktop:text-[20px]'>{memoContent.length} / 300</p>
-            <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2'>
+            <p className='desktop:text-[20px] dark:text-white'>
+              {memoContent.length} / 300
+            </p>
+            <p className='text-[12px] mb-1 desktop:text-[20px] desktop:mb-2 dark:text-white'>
               {findList.date}
             </p>
           </div>
@@ -67,7 +69,9 @@ function TodoDetailPopup({ selectedId }) {
               ))}
             </div>
           ) : (
-            <p className='desktop:text-[20px]'>해시태그를 추가해보세요</p>
+            <p className='desktop:text-[20px] dark:text-white'>
+              해시태그를 추가해보세요
+            </p>
           )}
           <input
             onKeyDown={onKeyDown}
@@ -75,7 +79,7 @@ function TodoDetailPopup({ selectedId }) {
             value={hashtagInputValue}
             maxLength={6}
             placeholder='#태그추가'
-            className='outline-none bg-transparent border-b-2 px-[0.5px] w-[120px] absolute bottom-[20px] desktop:text-2xl desktop:w-[170px] desktop:px-1 desktop:bottom-[40px]'
+            className='outline-none bg-transparent border-b-2 px-[0.5px] w-[120px] absolute bottom-[20px] desktop:text-2xl desktop:w-[170px] desktop:px-1 desktop:bottom-[40px] dark:border-white dark:text-white'
           />
         </div>
 

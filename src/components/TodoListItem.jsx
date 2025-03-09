@@ -32,9 +32,9 @@ function TodoListItem({ todo, setSelectedId }) {
 
   return (
     <li
-      className='bg-orange dark:bg-black h-[70px] rounded-3xl px-3 flex items-center 
+      className='bg-orange h-[70px] rounded-3xl px-3 flex items-center 
                  desktop:h-[120px] desktop:px-[34px] hover:bg-orange2 
-                  min-w-0 w-full'
+                  min-w-0 w-full dark:bg-black-10'
     >
       <button onClick={() => checkTodoList()}>
         <img

@@ -27,8 +27,8 @@ function TodoListEditTitlePopup({ selectedId }) {
 
   return (
     <div className='absolute top-0 w-full h-full bg-black bg-opacity-50 z-10'>
-      <div className='w-[340px] h-[200px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[550px] desktop:h-[320px] desktop:mt-[250px] desktop:py-8'>
-        <p className='text-xl font-bold grow desktop:text-[36px]'>
+      <div className='dark:bg-black-10 w-[340px] h-[200px] bg-yellow rounded-xl py-4 text-center flex flex-col mx-auto mt-[280px] desktop:w-[550px] desktop:h-[320px] desktop:mt-[250px] desktop:py-8'>
+        <p className='dark:text-white text-xl font-bold grow desktop:text-[36px]'>
           일정 이름 수정
         </p>
         {viewErrorMessage && (
@@ -37,7 +37,7 @@ function TodoListEditTitlePopup({ selectedId }) {
           </div>
         )}
         <input
-          className='focus:outline-none bg-transparent  mb-8 w-2/3 mx-auto border-b-2 px-1 desktop:mt-5 desktop:text-lg'
+          className='dark:text-white focus:outline-none bg-transparent  mb-8 w-2/3 mx-auto border-b-2 px-1 desktop:mt-5 desktop:text-lg dark:border-white'
           onChange={onChangeTitle}
           maxLength={12}
           onKeyDown={(e) => {
