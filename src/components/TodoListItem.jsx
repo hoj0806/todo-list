@@ -28,8 +28,8 @@ function TodoListItem({ todo, setSelectedId }) {
   }
 
   return (
-    <div onClick={() => setSelectedId(id)}>
-      <li className='bg-orange dark:bg-black h-[58px] rounded-2xl px-3 flex items-center desktop:h-[120px] desktop:px-[34px]'>
+    <div onClick={() => setSelectedId(id)} className='cursor-pointer'>
+      <li className='bg-orange dark:bg-black h-[58px] rounded-2xl px-3 flex items-center desktop:h-[120px] desktop:px-[34px] hover:bg-orange2 '>
         <button onClick={() => checkTodoList()}>
           <img
             src={checked ? CheckedIcon : NotCheckedIcon}

@@ -11,6 +11,7 @@ import { modifyMode } from "../slice/modeSlice";
 function Header() {
   const isDark = useSelector((state) => state.darkModeSlice.isDark);
   const dispatch = useDispatch();
+  const todoList = useSelector((state) => state.todoSlice.todoList);
 
   function saveDarkMode(mode) {
     localStorage.setItem("theme", mode);
@@ -43,6 +44,10 @@ function Header() {
   }
 
   function onClickSearchButton() {
+    if (todoList.length === 0) {
+      dispatch(modifyMode("add"));
+      return;
+    }
     dispatch(modifyMode("listSearch"));
   }
   return (
