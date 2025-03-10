@@ -1,5 +1,5 @@
-import SearchItem from "./PopupSearchListItem";
 import CancelIcon from "../assets/icon/cancel.svg";
+import DarkModeCancelIcon from "../assets/icon/DarkModeCancel.svg";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupSearchTerm } from "../slice/todoSlice";
@@ -7,6 +7,7 @@ import { modifyMode } from "../slice/modeSlice";
 import PopupSearchListItem from "./PopupSearchListItem";
 
 function TodoListSearchPopup({ setSelectedId }) {
+  const isDark = useSelector((state) => state.darkModeSlice.isDark);
   const dispatch = useDispatch();
   const popupSearchTerm = useSelector(
     (state) => state.todoSlice.popupSearhTerm
@@ -39,7 +40,10 @@ function TodoListSearchPopup({ setSelectedId }) {
           일정 검색
         </p>
         <button className='absolute right-2 top-2' onClick={onClickSearchPopup}>
-          <img src={CancelIcon} className='w-[52px] h-[52px]' />
+          <img
+            src={isDark ? DarkModeCancelIcon : CancelIcon}
+            className='w-[52px] h-[52px]'
+          />
         </button>
         <input
           className='bg-transparent outline-none border-b-2 w-[420px] mx-auto pl-1 text-[24px] dark:border-white dark:text-white'

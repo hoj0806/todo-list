@@ -13,9 +13,9 @@ import TodoListEditTitlePopup from "./components/TodoListEditTitlePopup";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { setSearchTerm } from "./slice/todoSlice";
 import ClearAllListPopup from "./components/ClearAllListPopup";
 import { useMediaQuery } from "react-responsive";
+import { setSearchTerm } from "./slice/todoSlice";
 
 function App() {
   const mode = useSelector((state) => state.modeSlice);
@@ -48,9 +48,12 @@ function App() {
           />
           <AddButton />
         </MobileFeatureLayout>
+
         <TodoList setSelectedId={setSelectedId} />
       </AppLayout>
-      {mode.mode === "add" ? <TodoListAddPopup /> : null}
+      {mode.mode === "add" ? (
+        <TodoListAddPopup setInputValue={setInputValue} />
+      ) : null}
       {mode.mode === "delete" ? (
         <TodoListDeletePopup selectedId={selectedId} />
       ) : null}

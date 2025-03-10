@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { returnDefault } from "../slice/modeSlice";
-import { addList } from "../slice/todoSlice";
+
+import { addList, setSearchTerm } from "../slice/todoSlice";
 import makeDateString from "../util/makeDateString";
-function TodoListAddPopup() {
+function TodoListAddPopup({ setInputValue }) {
   const [listTitle, setListTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ function TodoListAddPopup() {
       setErrorMessage(true);
       return;
     }
+    setInputValue("");
+    dispatch(setSearchTerm(""));
     dispatch(addList(listTitle, makeDateString()));
     dispatch(returnDefault());
   }

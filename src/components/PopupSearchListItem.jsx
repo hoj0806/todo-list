@@ -1,11 +1,13 @@
 import { useDispatch } from "react-redux";
 import { modifyMode } from "../slice/modeSlice";
+import { setPopupSearchTerm } from "../slice/todoSlice";
 
 function PopupSearchListItem({ todo, setSelectedId }) {
   const dispatch = useDispatch();
   function onClickPopupList() {
     setSelectedId(todo.id);
     dispatch(modifyMode("listDetail"));
+    dispatch(setPopupSearchTerm(""));
   }
   return (
     <li

@@ -133,6 +133,9 @@ const todoSlice = createSlice({
         hasgTags.push(action.payload.hasgTagContent);
       },
     },
+    dndList: (state, action) => {
+      state.todoList = action.payload;
+    },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
@@ -158,4 +161,5 @@ export const {
   setSearchTerm,
   setPopupSearchTerm,
   clearAllList,
+  dndList,
 } = todoSlice.actions;
