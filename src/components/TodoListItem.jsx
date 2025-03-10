@@ -1,15 +1,21 @@
 import NotCheckedIcon from "../assets/icon/notChecked.svg";
 import CheckedIcon from "../assets/icon/checked.svg";
-
 import editIcon from "../assets/icon/edit.svg";
 import deleteIcon from "../assets/icon/delete.svg";
-import { useDispatch } from "react-redux";
+import DarkModeNotCheckedIcon from "../assets/icon/DarkModeNotChecked.svg";
+import DarkModeCheckedIcon from "../assets/icon/DarkModeChecked.svg";
+
+import { useDispatch, useSelector } from "react-redux";
 import { checkList } from "../slice/todoSlice";
 import { modifyMode } from "../slice/modeSlice";
 import TodoListHashtag from "./TodoListHashtag";
+
 function TodoListItem({ todo, setSelectedId }) {
   const dispatch = useDispatch();
   const { title, checked, id, hashtags } = todo;
+  const isDark = useSelector((state) => state.darkModeSlice.isDark);
+  let checkedIconName = isDark ? DarkModeCheckedIcon : CheckedIcon;
+  let NotcheckedIconName = isDark ? DarkModeNotCheckedIcon : NotCheckedIcon;
 
   function checkTodoList() {
     dispatch(checkList(id));
@@ -38,12 +44,12 @@ function TodoListItem({ todo, setSelectedId }) {
     >
       <button onClick={() => checkTodoList()}>
         <img
-          src={checked ? CheckedIcon : NotCheckedIcon}
+          src={checked ? checkedIconName : NotcheckedIconName}
           className='mr-4 desktop:h-[58px] desktop:w-[58px] desktop:mr-6'
         />
       </button>
       <div
-        className={`relative font-bold text-xl grow desktop:text-[48px] ${
+        className={`dark:decoration-white relative font-bold text-xl grow desktop:text-[48px] ${
           checked && "line-through"
         }`}
       >
