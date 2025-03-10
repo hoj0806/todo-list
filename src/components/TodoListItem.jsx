@@ -10,7 +10,7 @@ import { checkList } from "../slice/todoSlice";
 import { modifyMode } from "../slice/modeSlice";
 import TodoListHashtag from "./TodoListHashtag";
 
-function TodoListItem({ todo, setSelectedId }) {
+function TodoListItem({ todo, setSelectedId, dragHandleProps, isDragging }) {
   const dispatch = useDispatch();
   const { title, checked, id, hashtags } = todo;
   const isDark = useSelector((state) => state.darkModeSlice.isDark);
@@ -37,10 +37,12 @@ function TodoListItem({ todo, setSelectedId }) {
   }
 
   return (
-    <li
-      className='bg-orange h-[70px] rounded-3xl px-3 flex items-center 
+    <div
+      className={`${
+        isDragging ? "bg-purple-10" : "bg-orange"
+      } h-[70px] rounded-3xl px-3 flex items-center 
                  desktop:h-[120px] desktop:px-[34px] hover:bg-orange2 
-                  min-w-0 w-full dark:bg-black-10'
+                  min-w-0 w-full dark:bg-black-10`}
     >
       <button onClick={() => checkTodoList()}>
         <img
@@ -54,6 +56,7 @@ function TodoListItem({ todo, setSelectedId }) {
         }`}
       >
         <span
+          {...dragHandleProps}
           className='dark:text-white hover:underline cursor-pointer'
           onClick={onClickListTitle}
         >
@@ -86,7 +89,7 @@ function TodoListItem({ todo, setSelectedId }) {
           />
         </button>
       </div>
-    </li>
+    </div>
   );
 }
 
